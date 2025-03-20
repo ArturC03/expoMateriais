@@ -72,4 +72,9 @@ class User extends Authenticatable
         return $this->hasOne(Curso::class, 'diretor_curso_id');
     }
 
+    public function isAdmin(): bool
+    {
+        return $this->cargos()->where('nome', 'Administrador')->exists();
+    }
+
 }

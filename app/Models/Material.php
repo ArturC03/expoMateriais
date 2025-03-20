@@ -11,6 +11,7 @@ class Material extends Model
 
     protected $fillable = [
         'nome',
+        'categoria_id',
         'descricao',
     ];
 
@@ -24,5 +25,14 @@ class Material extends Model
         ->using(LocalMaterial::class)
         ->withPivot('quantidade')
         ->withTimestamps();
+    }
+
+    /**
+     * Categoria do material.
+     * @return BelongsTo
+     */
+    public function categoria(): BelongsTo
+    {
+        return $this->belongsTo(Categoria::class);
     }
 }

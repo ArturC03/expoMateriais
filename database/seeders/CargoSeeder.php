@@ -19,6 +19,7 @@ class CargoSeeder extends Seeder
             ['nome' => 'Funcionário'],
             ['nome' => 'Diretor'],
             ['nome' => 'Administrativo'],
+            ['nome' => 'Administrador'],
         ];
 
         foreach ($cargos as $cargo) {

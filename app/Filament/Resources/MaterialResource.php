@@ -13,6 +13,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\Categoria;
 
 class MaterialResource extends Resource
 {
@@ -28,10 +29,18 @@ class MaterialResource extends Resource
                 Forms\Components\TextInput::make('nome')
                     ->required()
                     ->maxLength(255),
-                        Forms\Components\Textarea::make('descricao')
+                    \Filament\Forms\Components\Textarea::make('descricao')
                     ->label('Descrição')
                     ->required()
                     ->maxLength(255),
+                    Forms\Components\Select::make('categoria')
+                    ->label('Categoria')
+                    ->options(function() {
+                    $materiais = Material::all()->pluck('nome')->toArray();
+                    return array_combine($materiais, $materiais);
+                    })
+                    ->required(),
+
             ]);
     }
 

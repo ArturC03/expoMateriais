@@ -90,7 +90,7 @@ export default function Dashboard({ user, cargo, curso, materiais, requisicoes, 
     const formatDate = (dateString: string) => {
         try {
             return format(parseISO(dateString), 'dd/MM/yyyy', { locale: pt });
-        } catch (_) {
+        } catch (error) {
             return dateString;
         }
     };
